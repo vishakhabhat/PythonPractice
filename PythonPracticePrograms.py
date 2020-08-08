@@ -1305,4 +1305,20 @@ import random
 #     except ValueError as v:
 #         print('Error Code:', v)
 
+
+
+# Validate mobile no. of 10 digits starting with 7, 8 or 9 using regex:
+
+# import re
+
+# N = int(input())
+
+# for _ in range(N):
+#     str = input()
+#     match = re.search(r'^(7{1}|8{1}|9{1})(\d{9})$', str)
+#     # If-statement after search() tests if it succeeded
+#     if match:
+#         print('YES')
+#     else:
+#         print('NO')
         
