@@ -1271,18 +1271,38 @@ import random
 
 # Use of map and lambda function for finding cubes of fibonacci series
 
-a = 0
-b = 1
-n = 5
-nums = []
+# a = 0
+# b = 1
+# n = 5
+# nums = []
 
 
-for _ in range(n):
-    nums.append(a)
+# for _ in range(n):
+#     nums.append(a)
 
-    c = a + b
-    a = b
-    b = c
-print('nums : ',nums)
+#     c = a + b
+#     a = b
+#     b = c
+# print('nums : ',nums)
 
-print('lambda : ', list(map(lambda x: x**3, nums)))
+# print('lambda : ', list(map(lambda x: x**3, nums)))
+
+
+# Exceptions :
+
+# t = int(input())
+
+# for _ in range(t):
+
+#     try:
+#         a, b = input().split()
+    
+#         try:
+#             print(int(a)//int(b))
+#         except ZeroDivisionError as e:
+#             print('Error Code:', e)
+
+#     except ValueError as v:
+#         print('Error Code:', v)
+
+        
