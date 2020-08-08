@@ -1322,3 +1322,21 @@ import random
 #     else:
 #         print('NO')
         
+
+# Validate email address and print name and email in a pattern followed by email.utils :
+
+import re
+import email.utils
+
+regex = '^[a-zA-Z][\w\-\.]*@[A-Za-z]+\.[a-zA-Z]{1,3}$' 
+t = int(input())
+
+for _ in range(t):
+    # name, email1 = input().split()
+    value = input()
+
+    
+    name, email1 = email.utils.parseaddr(value)
+    print('name email :', name, email1)
+    if(re.search(regex,email1)):
+        print(email.utils.formataddr((name, email1)))
