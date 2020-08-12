@@ -1325,18 +1325,95 @@ import random
 
 # Validate email address and print name and email in a pattern followed by email.utils :
 
-import re
-import email.utils
+# import re
+# import email.utils
 
-regex = '^[a-zA-Z][\w\-\.]*@[A-Za-z]+\.[a-zA-Z]{1,3}$' 
-t = int(input())
+# regex = '^[a-zA-Z][\w\-\.]*@[A-Za-z]+\.[a-zA-Z]{1,3}$' 
+# t = int(input())
 
-for _ in range(t):
-    # name, email1 = input().split()
-    value = input()
+# for _ in range(t):
+#     # name, email1 = input().split()
+#     value = input()
 
     
-    name, email1 = email.utils.parseaddr(value)
-    print('name email :', name, email1)
-    if(re.search(regex,email1)):
-        print(email.utils.formataddr((name, email1)))
+#     name, email1 = email.utils.parseaddr(value)
+#     print('name email :', name, email1)
+#     if(re.search(regex,email1)):
+#         print(email.utils.formataddr((name, email1)))
+
+
+# Symmetric Difference between two sets i.e those elements which are present in either of two sets but not in both.
+
+# m_list = []
+# n_list = []
+# op_set = set()
+# M = int(input())
+# for _ in range(M):
+#     m_list = list(map(int, input().split()))
+#     print('inside ;', m_list)  
+
+# # m_list = [int(x) for x in input().split()]
+
+# N = int(input())
+# for _ in range(N):
+#     n_list = list(map(int, input().split()))
+#     print('inside ;', n_list)  
+
+# # N = int(input())
+# # n_list = [int(y) for y in input().split()]
+
+# line = set(m_list).difference(set(n_list))
+# op_set.add(line)
+# line = set(n_list).difference(set(m_list))
+# op_set.add(line)
+
+# # for _ in range(M):
+# #     m_list = list(map(int, input().split()))
+# #     print('inside ;', m_list)  
+
+# # N = int(input())
+# # for _ in range(N):
+# #     N_line = input().split(' ')
+
+# print('op :', m_list, n_list)
+
+# m_set = set()
+# n_set = set()
+# op_set = set()
+
+# m = int(input())
+
+# m_set = map(int, input().split()[:m])
+# print('inside ;', set(m_set))  
+
+# print('space ')
+
+# n = int(input())
+# n_set = map(int, input().split()[:n])
+# print('inside ;', set(n_set))
+
+# print(set(m_set).difference(set(n_set)))
+
+# print(set(n_set).difference(set(m_set)))
+
+
+# print('ans', op_set)
+
+
+m = int(input())
+
+m_set = set(map(int, input().split()[:m]))
+
+print(m_set)
+
+n = int(input())
+
+n_set = set(map(int, input().split()[:n]))
+
+print(n_set)
+
+ans = list((m_set.difference(n_set)).union(n_set.difference(m_set)))
+
+print('\n'.join(map(str, sorted(ans))))
+# print("\n".join(map(str, (m_set.difference(n_set)).union(n_set.difference(m_set)))))
+
