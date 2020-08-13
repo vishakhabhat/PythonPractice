@@ -1400,20 +1400,59 @@ import random
 # print('ans', op_set)
 
 
-m = int(input())
+# m = int(input())
 
-m_set = set(map(int, input().split()[:m]))
+# m_set = set(map(int, input().split()[:m]))
 
-print(m_set)
+# print(m_set)
 
-n = int(input())
+# n = int(input())
 
-n_set = set(map(int, input().split()[:n]))
+# n_set = set(map(int, input().split()[:n]))
 
-print(n_set)
+# print(n_set)
 
-ans = list((m_set.difference(n_set)).union(n_set.difference(m_set)))
+# ans = list((m_set.difference(n_set)).union(n_set.difference(m_set)))
 
-print('\n'.join(map(str, sorted(ans))))
-# print("\n".join(map(str, (m_set.difference(n_set)).union(n_set.difference(m_set)))))
+# print('\n'.join(map(str, sorted(ans))))
+# # print("\n".join(map(str, (m_set.difference(n_set)).union(n_set.difference(m_set)))))
+
+
+# Average score of students:
+
+# # n = no. of students
+# # x = no. of subjects
+# n, x = map(int, input().split())
+# # marks = [[0]*cols]*rows
+# # print('marks ', marks)
+
+# # val = int(input())
+# # marks = [val*n]*x
+# # print('marks ', marks)
+
+# # marks = [[0 for i in range(n)] for j in range(x)]
+# marks = []
+
+# for _ in range(x):
+#         marks += [map(float, input().split()[:n])]
+
+# # print('m',marks)
+
+# for stu_marks in zip(*marks):
+#         print(sum(stu_marks)/x)
+
+
+
+# Input Format :
+# Given x, k and P such that if P(x)=k, print True else False.
+
+x, k = list(map(int, input().split()))
+p = input()
+
+if eval(p) == k:
+        print(True)
+else:
+        print(False)
+
+
 
