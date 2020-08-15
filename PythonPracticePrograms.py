@@ -1446,13 +1446,44 @@ import random
 # Input Format :
 # Given x, k and P such that if P(x)=k, print True else False.
 
-x, k = list(map(int, input().split()))
-p = input()
+# x, k = list(map(int, input().split()))
+# p = input()
 
-if eval(p) == k:
-        print(True)
-else:
-        print(False)
+# if eval(p) == k:
+#         print(True)
+# else:
+#         print(False)
+
+
+# Check whether a number is a valid floaing point number or not :
+
+# import re
+
+# regex = r"^[+-]?\d*\.\d+$"
+# n = int(input())
+# for _ in range(n):
+#         line = input()
+#         if (re.search(regex, line)):
+#                 print(True)
+#         else:
+#                 print(False)
 
 
 
+# Regression Pattern 
+
+import re
+
+# regex = r"[,.]"
+
+# line = input()
+# print("\n".join(map(str, (re.split(', | . ', line)))))
+# ans = re.split(', | .', line)
+
+# [print(i) for i in re.split('[.,]', input()) if i]
+
+#
+
+regex_pattern = r"[,.]"	# Do not delete 'r'.
+
+print("\n".join(re.split(regex_pattern, input())))
