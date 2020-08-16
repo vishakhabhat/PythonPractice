@@ -1472,18 +1472,65 @@ import random
 
 # Regression Pattern 
 
+# import re
+
+# # regex = r"[,.]"
+
+# # line = input()
+# # print("\n".join(map(str, (re.split(', | . ', line)))))
+# # ans = re.split(', | .', line)
+
+# # [print(i) for i in re.split('[.,]', input()) if i]
+
+# #
+
+# regex_pattern = r"[,.]"	# Do not delete 'r'.
+
+# print("\n".join(re.split(regex_pattern, input())))
+
+
+# Find the first occurence of an alphanumeric charactrs from a given string :
+
+# import re
+# s = input()
+
+# regex = r"([A-Za-z0-9])\1+"
+# m = re.search(regex, s)
+
+# if m:
+#         print(m.group(1))
+# else:
+#         print('-1')
+
+# Find the pattern having 2 or more vowels between 2 consonants and print the vowels :
+
+
+# regex = r"([AEIOUaeiou][AEIOUaeiou]+)"
+# regex = r"[^aiueo]([aiueoAIUEO]{2,})[^aiueo]"
+
+
+# import re
+
+# VOWELS = 'aeiou'
+# CONSONANTS = 'bcdfghjklmnpqrstvwxyz'
+# REGEX = '(?<=[' + CONSONANTS + '])([' + VOWELS + ']{2,})[' + CONSONANTS + ']'
+
+# match = re.findall(REGEX, input(), re.IGNORECASE)
+# if match:
+#     print(*match, sep='\n')
+# else:
+#     print('-1')
+
+
+# Indices of the start and end of the substring matched by the group :
+
 import re
+S = input()
+k = input()
+anymatch = 'No'
+for m in re.finditer(r'(?=('+k+'))',S):
+    anymatch = 'Yes'
+    print((m.start(1),m.end(1)-1))
+if anymatch == 'No':
+    print((-1, -1))
 
-# regex = r"[,.]"
-
-# line = input()
-# print("\n".join(map(str, (re.split(', | . ', line)))))
-# ans = re.split(', | .', line)
-
-# [print(i) for i in re.split('[.,]', input()) if i]
-
-#
-
-regex_pattern = r"[,.]"	# Do not delete 'r'.
-
-print("\n".join(re.split(regex_pattern, input())))
