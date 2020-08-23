@@ -1524,13 +1524,167 @@ import random
 
 # Indices of the start and end of the substring matched by the group :
 
-import re
-S = input()
-k = input()
-anymatch = 'No'
-for m in re.finditer(r'(?=('+k+'))',S):
-    anymatch = 'Yes'
-    print((m.start(1),m.end(1)-1))
-if anymatch == 'No':
-    print((-1, -1))
+# import re
+# S = input()
+# k = input()
+# anymatch = 'No'
+# for m in re.finditer(r'(?=('+k+'))',S):
+#     anymatch = 'Yes'
+#     print((m.start(1),m.end(1)-1))
+# if anymatch == 'No':
+#     print((-1, -1))
+
+
+# Validate Roman Numerals using Regular Exression :
+
+# regex_pattern = r"^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$"	# Do not delete 'r'.
+
+# import re
+# print(str(bool(re.match(regex_pattern, input()))))
+
+# Two ways to write the same logic :
+
+# counts = {'ans':'one', 'black':'two', 'panther':'three'}
+
+# lst = []
+# for key, val in counts.items():
+#     newtup = (val, key)
+#     lst.append(newtup)
+# lst = sorted(lst, reverse=True)
+# print(lst)
+
+# print('next way')
+
+# print( sorted( [ (v,k) for k,v in counts.items() ], reverse=True ) )
+
+
+
+# Hex Color Code :
+
+# import re
+# n = int(input())
+# lines = ""
+
+# for _ in range(n):
+#     lines += input()
+#     lines += '\n'
+
+# print('op', lines)
+# regex1 = r"\{.*?\}"
+# regex2 = r"#(?:[a-fA-F0-9]{3}|[a-fA-F0-9]{6})\b"
+
+# inside_brackets = re.findall(regex1, lines, re.DOTALL)
+# print('i b ', inside_brackets)
+
+
+# for prop in inside_brackets:
+#     match = re.findall(regex2, prop)
+#     if match:
+#         print('\n'.join(match))
+    
+# Note: re.S or re.DOTALL matches any character including a newline
+
+
+# HTML Parser - Part 1 :
+# from html.parser import HTMLParser
+
+# class MyHTMLParser(HTMLParser):
+
+#     def handle_starttag(self, tag, attrs):
+#         print("Start :", tag)
+#         if attrs:
+#             # print("attrs", attrs, 'type', type(attrs))
+#             for i in attrs:
+#                 data, value = i
+#                 print("->", data, ">", value)
+
+#     def handle_endtag(self, tag):
+#         print("End   :", tag)
+
+#     def handle_startendtag(self, tag, attrs):
+#         print("Empty :", tag)
+#         if attrs:
+#             # print("attrs", attrs, 'type', type(attrs))
+#             for i in attrs:
+#                 data, value = i
+#                 print("->", data, ">", value)
+
+
+# n = int(input())
+# html_code = ''
+
+# for _ in range(n):
+#     html_code += input()
+# # html_code = map(str, input().split()[:n])
+
+# print('ans', html_code)
+
+# parser = MyHTMLParser()
+# parser.feed(html_code)
+# parser.close()
+
+
+# HTML Parser - Part 2 :
+
+# class MyHTMLParser(HTMLParser):
+
+#     def handle_data(self, data):
+#         if data.strip():
+#             print(">>> Data")
+#             print(data)
+
+#     def handle_comment(self, data):
+#         no_of_lines = len(data.split('\n'))
+#         # print('inside comment1 ', no_of_lines)
+#         if no_of_lines > 1:
+#             print(">>> Multi-line Comment")
+#         else:
+#             print(">>> Single-line Comment")
+#         if data.strip():
+#             print(data)
+            
+
+# n = int(input())
+# html_code = ''
+
+# for _ in range(n):
+#     html_code += input()+"\n"
+
+
+# print('ans', html_code)
+
+# parser = MyHTMLParser()
+# parser.feed(html_code)
+# parser.close()
+
+
+# Detect HTML Tags, Attributes and Attribute Values :
+
+# class MyHTMLParser(HTMLParser):
+
+#     def handle_starttag(self, tag, attrs):
+#         print(tag)
+#         if attrs:
+#             for i in attrs:
+#                 data, value = i
+#                 print("->", data, ">", value)
+
+#     def handle_startendtag(self, tag, attrs):
+#         print(tag)
+#         if attrs:
+#             for i in attrs:
+#                 data, value = i
+#                 print("->", data, ">", value)
+
+      
+# n = int(input())
+# html_code = ''
+
+# for _ in range(n):
+#     html_code += input()+"\n"
+
+# parser = MyHTMLParser()
+# parser.feed(html_code)
+# parser.close()
+
 
