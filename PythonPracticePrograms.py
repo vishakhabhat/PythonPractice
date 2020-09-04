@@ -1688,3 +1688,81 @@ import random
 # parser.close()
 
 
+
+
+# Validating UID :
+
+# import re
+# for _ in range(int(input())):
+#     s = input()
+#     result = (len(set(re.findall(r'[a-zA-Z0-9]', s))) == 10 and
+#               len(re.findall(r'[A-Z]', s)) > 1 and
+#               len(re.findall(r'[0-9]', s)) > 2)
+#     print('res', result)
+#     print('Valid' if result else 'Invalid')
+
+
+# XML 1 - Find the score :
+
+# import sys
+# import xml.etree.ElementTree as etree
+
+# def get_attr_number(node):
+#     count = len(node.attrib)
+#     for child in node:
+#         count += get_attr_number(child)
+#     return count
+    
+# # if __name__ == '__main__':
+# # sys.stdin.readline()
+# # print('readline')
+# n = int(input())
+
+# xml = ''
+# for _ in range(n):
+#     xml += input() + '\n'
+# print('xml', xml)
+
+# tree = etree.ElementTree(etree.fromstring(xml))
+# print('tree', tree)
+# root = tree.getroot()
+# print('root', root)
+# print(get_attr_number(root))
+
+
+# Validating Credit Card Numbers :
+
+# import re
+
+# cons = re.compile(r"(\d)(\1){3}")
+# # print('cons', cons)
+# f = re.compile(r"\d{4}\-?\d{4}\-?\d{4}\-?\d{4}")
+
+# n = int(input())
+
+# for _ in range(n):
+#     s = input()
+    
+#     # print('ans', bool(re.findall(r"^4|^5|^6", s)))
+#     # print('ans1', re.findall(r"([0-9]-[0-9]){4}", s))
+#     # print('ans2', len(re.findall(r"[0-9]", s)) == 16) 
+
+#     if len(s) != 16 and len(s) != 19:
+#         print("Invalid")
+#         continue
+#     if s[0] not in "456":
+#         print("Invalid")
+#         continue
+#     if not f.match(s):
+#         print("Invalid")
+#         continue
+
+#     s = s.replace("-", "")
+
+#     if cons.search(s):
+#         print("Invalid")
+#         continue 
+
+#     print("Valid")   
+
+
