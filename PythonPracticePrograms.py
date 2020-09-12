@@ -1766,3 +1766,134 @@ import random
 #     print("Valid")   
 
 
+# XML2 - Find the Maximum Depth :
+
+# import xml.etree.ElementTree as etree
+
+# maxdepth = 0
+# def depth(elem, level):
+#     global maxdepth
+#     level += 1
+#     if (maxdepth < level):
+#         maxdepth = level
+#     for child in elem:
+#         depth(child, level)
+
+# # if __name__ == '__main__':
+# n = int(input())
+# xml = ""
+# for i in range(n):
+#         xml =  xml + input() + "\n"
+# print('xml ', xml)
+# tree = etree.ElementTree(etree.fromstring(xml))
+# depth(tree.getroot(), -1)
+# print(maxdepth)
+
+
+# Standarize Mobile Number Using Decoators :
+
+# def standerize(f):
+#         print('args', f)
+#         def fun(mob_num):
+#                 print('mob num dec', mob_num)
+#                 # mob_num = [n[-10:] for n in mob_num]
+#                 mob_num = ["+91 %s %s" %(n[-10:-5],n[-5:]) for n in f(mob_num)]
+#                 print('now mob', mob_num)
+#                 return mob_num
+#         return fun
+
+# @standerize
+# def sort_nums(mob_num):
+#        return sorted(mob_num)
+
+# n = int(input())
+
+# mob_num = []
+# for _ in range(n):
+#         mob_num.append(input())
+
+# print('mob ', mob_num)
+# for num in sort_nums(mob_num):
+#         print(num)
+
+#    ---XXX---OR---XXX---
+
+# def wrapper(f):
+#     def fun(l):
+#         return l
+#     return fun
+    
+# @wrapper
+# def sort_phone(l):
+#     print('inside sort l', l)
+#     print(*sorted(l), sep='\n')
+
+# l = [input() for _ in range(int(input()))]
+# print('l outside',l)
+# sort_phone(l)
+ 
+
+# Decorators 2 - Name Directory :
+
+# n = int(input())
+
+# values = []
+# line = []
+# # for _ in range(n):
+# #         values.append(input())
+# for _ in range(n):
+#         line = list(map(str, input().split()))
+#         values.append(line)
+
+# print('ans', values)
+
+# from operator import itemgetter
+
+# values.sort(key=itemgetter(2))
+# print('after sort ', values)
+
+# ans_list = []
+
+# from itertools import groupby
+# for elt, items in groupby(values, itemgetter(2)):
+#         for i in items:
+#                 if i[3] == 'M':
+#                         print("Mr.", i[0], i[1])
+#                 else:
+#                         print("Ms.", i[0], i[1])
+
+# or
+
+# import operator
+
+# def person_lister(f):
+#     def inner(people):
+#         print('people',people)
+#         people.sort(key=operator.itemgetter(2))
+#         people
+#     return inner
+
+# @person_lister
+# def name_format(person):
+#     return ("Mr. " if person[3] == "M" else "Ms. ") + person[0] + " " + person[1]
+
+# # if __name__ == '__main__':
+# people = [input().split() for i in range(int(input()))]
+# print('chutiya',*name_format(people), sep='\n')
+
+
+# Arrays :
+
+# n, m = input().split()
+
+# array = []
+# for _ in range(int(n)):
+#         array.append(list(map(int, input().split())))
+
+# print(array)
+
+# n = tuple(map(int, input().split()))
+# print('n', n)
+
+# This gives the output as n (3, 3, 3) if input = 3 3 3
+# or output as n (2, 3) if input = 2 3
