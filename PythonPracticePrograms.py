@@ -1820,7 +1820,7 @@ import random
 
 # def wrapper(f):
 #     def fun(l):
-#         return l
+#         f(["+91 "+i[-10:-5]+" "+i[-5:] for i in l])
 #     return fun
     
 # @wrapper
@@ -1864,22 +1864,21 @@ import random
 
 # or
 
-# import operator
+import operator
 
-# def person_lister(f):
-#     def inner(people):
-#         print('people',people)
-#         people.sort(key=operator.itemgetter(2))
-#         people
-#     return inner
+def person_lister(f):
+    def inner(people):
+        print('in', people)
+        return map(f, sorted(people, key=lambda x: int(x[2])))      
+    return inner
 
-# @person_lister
-# def name_format(person):
-#     return ("Mr. " if person[3] == "M" else "Ms. ") + person[0] + " " + person[1]
+@person_lister
+def name_format(person):
+    return ("Mr. " if person[3] == "M" else "Ms. ") + person[0] + " " + person[1]
 
-# # if __name__ == '__main__':
-# people = [input().split() for i in range(int(input()))]
-# print('chutiya',*name_format(people), sep='\n')
+# if __name__ == '__main__':
+people = [input().split() for i in range(int(input()))]
+print(*name_format(people), sep='\n')
 
 
 # Arrays :
@@ -1897,3 +1896,16 @@ import random
 
 # This gives the output as n (3, 3, 3) if input = 3 3 3
 # or output as n (2, 3) if input = 2 3
+
+
+
+# n, m = input().split()
+
+# A = []
+# B = []
+# for _ in range(int(n)):
+#         A.append(list(map(int, input().split()[:int(m)])))
+# for _ in range(int(n)):
+#         B.append(list(map(int, input().split()[:int(m)])))
+
+# print('a', A, 'b', B)
