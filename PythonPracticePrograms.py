@@ -1976,25 +1976,54 @@ import random
 
 # Tic-tac-toe :
 
-the_board = {'top_L': ' ', 'top_M': ' ', 'top_R': ' ',
-            'mid_L': ' ', 'mid_M': ' ', 'mid_R': ' ',
-            'low_L': ' ', 'low_M': ' ', 'low_R': ' '}
+# the_board = {'top_L': ' ', 'top_M': ' ', 'top_R': ' ',
+#             'mid_L': ' ', 'mid_M': ' ', 'mid_R': ' ',
+#             'low_L': ' ', 'low_M': ' ', 'low_R': ' '}
 
-def print_board(board):
-    print(board['top_L'] + '|' + board['top_M'] + '|' + board['top_R'])
-    print('-+-+-')
-    print(board['mid_L'] + '|' + board['mid_M'] + '|' + board['mid_R'])
-    print('-+-+-')
-    print(board['low_L'] + '|' + board['low_M'] + '|' + board['low_R'])
+# def print_board(board):
+#     print(board['top_L'] + '|' + board['top_M'] + '|' + board['top_R'])
+#     print('-+-+-')
+#     print(board['mid_L'] + '|' + board['mid_M'] + '|' + board['mid_R'])
+#     print('-+-+-')
+#     print(board['low_L'] + '|' + board['low_M'] + '|' + board['low_R'])
     
-turn = 'X'
-for i in range(9):
-    print_board(the_board)
-    print('Turn for ' + turn + '. Move on which space?')
-    move = input()
-    the_board[move] = turn
-    if turn == 'X':
-        turn = '0'
-    else:
-        turn = 'X'
-print_board(the_board)
+# turn = 'X'
+# for i in range(9):
+#     print_board(the_board)
+#     print('Turn for ' + turn + '. Move on which space?')
+#     move = input()
+#     the_board[move] = turn
+#     if turn == 'X':
+#         turn = '0'
+#     else:
+#         turn = 'X'
+# print_board(the_board)
+
+# Fantasy Game Inventory :
+
+stuff = {'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
+
+def displayInventory(inventory):
+    print("Inventory:")
+    item_total = 0
+    for k, v in sorted(inventory.items()):
+        # FILL THIS PART IN
+        print(str(v) + " " + k)
+        item_total = item_total + inventory.get(k, 0)
+    print("Total number of items: " + str(item_total))
+
+displayInventory(stuff)
+
+def addToInventory(inventory, addedItems):
+
+    for i in addedItems:
+        inventory.setdefault(i, 0)
+        inventory[i] = inventory[i] + 1
+    return inventory
+    
+
+inv = {'gold coin': 42, 'rope': 1}
+dragonLoot = ['gold coin', 'dragger', 'gold coin', 'gold coin', 'ruby']
+inv = addToInventory(inv, dragonLoot)
+print('in inv', inv)
+displayInventory(inv)
