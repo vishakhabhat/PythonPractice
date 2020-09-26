@@ -1864,21 +1864,21 @@ import random
 
 # or
 
-import operator
+# import operator
 
-def person_lister(f):
-    def inner(people):
-        print('in', people)
-        return map(f, sorted(people, key=lambda x: int(x[2])))      
-    return inner
+# def person_lister(f):
+#     def inner(people):
+#         print('in', people)
+#         return map(f, sorted(people, key=lambda x: int(x[2])))      
+#     return inner
 
-@person_lister
-def name_format(person):
-    return ("Mr. " if person[3] == "M" else "Ms. ") + person[0] + " " + person[1]
+# @person_lister
+# def name_format(person):
+#     return ("Mr. " if person[3] == "M" else "Ms. ") + person[0] + " " + person[1]
 
-# if __name__ == '__main__':
-people = [input().split() for i in range(int(input()))]
-print(*name_format(people), sep='\n')
+# # if __name__ == '__main__':
+# people = [input().split() for i in range(int(input()))]
+# print(*name_format(people), sep='\n')
 
 
 # Arrays :
@@ -1909,3 +1909,92 @@ print(*name_format(people), sep='\n')
 #         B.append(list(map(int, input().split()[:int(m)])))
 
 # print('a', A, 'b', B)
+
+
+# The Collatz Sequence :
+
+# def collatz(number):
+#     if number % 2 == 0:
+#         ans = number // 2
+#         print(ans)
+#         return ans
+#     else:
+#         ans = 3 * number + 1
+#         print(ans)
+#         return ans 
+
+# while True:
+#     try:
+#         number = int(input())
+#         ans = collatz(number)
+#         if ans == 1:
+#             break
+#     except:
+#         print("Only Integer value allowed")
+
+
+# Comma Code :
+
+# def comma_code(spam):
+#     line = ''
+#     for i in range(len(spam) - 1):
+#         line += spam[i]
+#         line += ', '
+#     line += 'and ' + spam[(len(spam) - 1)]
+#     return line 
+
+# spam = []
+
+# n = int(input())
+
+# for _ in range(n):
+#     spam.append(input())
+
+# print('ans', spam)
+
+# ans = comma_code(spam)
+# print('result', ans)
+
+
+# Character Picture Grid :
+
+# grid = [['.', '.', '.', '.', '.', '.'],
+#         ['.', '0', '0', '.', '.', '.'],
+#         ['0', '0', '0', '0', '.', '.'],
+#         ['0', '0', '0', '0', '0', '.'],
+#         ['.', '0', '0', '0', '0', '0'],
+#         ['0', '0', '0', '0', '0', '.'],
+#         ['0', '0', '0', '0', '.', '.'],
+#         ['.', '0', '0', '.', '.', '.'],
+#         ['.', '.', '.', '.', '.', '.']]
+
+# for j in range(6):
+#     for i in range(9):
+#         print(grid[i][j], end='')
+#     print()
+
+
+# Tic-tac-toe :
+
+the_board = {'top_L': ' ', 'top_M': ' ', 'top_R': ' ',
+            'mid_L': ' ', 'mid_M': ' ', 'mid_R': ' ',
+            'low_L': ' ', 'low_M': ' ', 'low_R': ' '}
+
+def print_board(board):
+    print(board['top_L'] + '|' + board['top_M'] + '|' + board['top_R'])
+    print('-+-+-')
+    print(board['mid_L'] + '|' + board['mid_M'] + '|' + board['mid_R'])
+    print('-+-+-')
+    print(board['low_L'] + '|' + board['low_M'] + '|' + board['low_R'])
+    
+turn = 'X'
+for i in range(9):
+    print_board(the_board)
+    print('Turn for ' + turn + '. Move on which space?')
+    move = input()
+    the_board[move] = turn
+    if turn == 'X':
+        turn = '0'
+    else:
+        turn = 'X'
+print_board(the_board)
