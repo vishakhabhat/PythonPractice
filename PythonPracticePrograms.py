@@ -2001,29 +2001,269 @@ import random
 
 # Fantasy Game Inventory :
 
-stuff = {'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
+# stuff = {'rope': 1, 'torch': 6, 'gold coin': 42, 'dagger': 1, 'arrow': 12}
 
-def displayInventory(inventory):
-    print("Inventory:")
-    item_total = 0
-    for k, v in sorted(inventory.items()):
-        # FILL THIS PART IN
-        print(str(v) + " " + k)
-        item_total = item_total + inventory.get(k, 0)
-    print("Total number of items: " + str(item_total))
+# def displayInventory(inventory):
+#     print("Inventory:")
+#     item_total = 0
+#     for k, v in sorted(inventory.items()):
+#         # FILL THIS PART IN
+#         print(str(v) + " " + k)
+#         item_total = item_total + inventory.get(k, 0)
+#     print("Total number of items: " + str(item_total))
 
-displayInventory(stuff)
+# displayInventory(stuff)
 
-def addToInventory(inventory, addedItems):
+# def addToInventory(inventory, addedItems):
 
-    for i in addedItems:
-        inventory.setdefault(i, 0)
-        inventory[i] = inventory[i] + 1
-    return inventory
+#     for i in addedItems:
+#         inventory.setdefault(i, 0)
+#         inventory[i] = inventory[i] + 1
+#     return inventory
     
 
-inv = {'gold coin': 42, 'rope': 1}
-dragonLoot = ['gold coin', 'dragger', 'gold coin', 'gold coin', 'ruby']
-inv = addToInventory(inv, dragonLoot)
-print('in inv', inv)
-displayInventory(inv)
+# inv = {'gold coin': 42, 'rope': 1}
+# dragonLoot = ['gold coin', 'dragger', 'gold coin', 'gold coin', 'ruby']
+# inv = addToInventory(inv, dragonLoot)
+# print('in inv', inv)
+# displayInventory(inv)
+
+
+# Table Printer :
+
+# def printTable(table):
+#     max_len = 0
+#     col_widths = [0] * len(table)
+#     print('col widths ', col_widths) 
+#     i = 0
+#     for i, row in enumerate(table):
+#         print(row)
+#         max_len = len(row[0])
+        
+#         # for col in row and (i in range(len(row))):
+#         for col in row:
+            
+#             if len(col) > max_len:
+#                 max_len = len(col)
+#             print('max len inside ', max_len)
+#         print('max len outside ', max_len)
+
+#         col_widths[i] = max_len
+        
+        
+        
+#         # print(str(row).rjust(col_widths[i]))
+#         print('col width inside ', col_widths, 'i ', i)
+        
+    
+#     print('col widths after', col_widths)
+
+#     print('ans')
+#     j = 0
+ 
+#     for k in range(4):
+#         for j in range(len(table)):
+            
+#             # print('j', j, k, k)
+            
+#             print(str(table[j][k]).rjust(8), end=' ')           
+#         print(end='\n')
+        
+    
+
+# tableData = [['apples', 'oranges', 'cherries', 'banana'],
+# ['Alice', 'Bob', 'Carol', 'David'],
+# ['dogs', 'cats', 'moose', 'goose']]
+
+# printTable(tableData)
+
+
+# Strong Password Detection :
+
+# import re
+
+# def check_strength(password):
+#     regex = '''
+#         ([a-zA-Z@%&]{8,})    # any 8 characters
+#         ([0-9]{1,})          # atleast 1 digit
+#     '''
+#     match = re.search(regex, password, re.I | re.VERBOSE)
+#     return match
+
+# while True:
+#     password = input("Enter password : ")
+#     valid = check_strength(password)
+#     if valid:
+#         print('Great, Password is strong !!!')
+#         break
+#     else:
+#         print('Password is weak, please set another password.')
+
+
+# Regex Version of strip() :
+
+# import re 
+
+# def regex_strip(line, pos='both'):
+#     match = ''
+#     print('line', line)
+#     if pos == 'right':
+#         regex = re.compile(r'(\w*\s*\w*)*\S+', re.I)
+#         print('regex ', regex)
+#     elif pos == 'left':
+#         regex = re.compile(r'\S+(\w*\s*\w*)*', re.I)
+#         print('regex ', regex)
+#     else:
+#         regex = re.compile(r'\S+(\w*\s*\w*)*\S+', re.I)
+#         print('regex ', regex)
+#     match = regex.search(line)
+#     print('match ', match)
+#     print(' match gp ', match.group())
+#     return match
+
+
+# print(input('Trial string').strip())
+# line = input("Enter the string : ")
+# print('line out ', line)
+# pos = input("Enter the postion : ")
+# print('pos out ', pos)
+# stripped = regex_strip(line, pos)
+# print('stripped out ', stripped)
+# print('ans', stripped.group())
+
+
+# Building a multiple choice quiz :
+
+# class Question:
+
+#     def __init__(self, prompt, answer):
+#         self.prompt = prompt
+#         self.answer = answer
+
+# question_prompts = [
+#     "What color are apples?\n(a) Red/Green\n(b) Purple\n(c) Oramge\n\n",
+#     "What color are bananas?\n(a) Pink\n(b) Yellow\n(c) Blue\n\n"
+
+# ]
+
+# questions = [
+#     Question(question_prompts[0], "a"),
+#     Question(question_prompts[1], "b"),
+# ]
+
+# def run_tests(questions):
+#     score = 0
+#     for question in questions:
+#         answer = input(question.prompt)
+#         if answer == question.answer:
+#             score += 1
+#     print("You got "+ str(score) + "/" + str(len(questions)) + " correct")
+
+
+# run_tests(questions)
+
+
+# Mad Libs :
+# import os, re
+
+# my_path = "/home/vishakha/Documents/Practice/LearningProgramming/"
+
+# my_words = [
+#     # {
+#     #     "ADJECTIVE": "", 
+#     #     "ADVERB": "", 
+#     #     "NOUN": "", 
+#     #     "VERB": ""
+#     # }
+# ]
+
+# if os.path.exists(my_path):
+#     with open(my_path+"sample.txt") as f1:
+#         lines = list(line.strip() for line in f1)
+
+#         f_list = []
+#         t_list = ''
+        
+#         for line in lines:
+#             print('word', line)
+#             # print('word i', word.split())
+#             # for i in word.split() if i.isalpha() else " ":
+#             splited = re.split(r'\s|\.', line)
+#             print('ans of split', splited)
+#             for i in splited:
+#                 if i in ["ADJECTIVE", "ADVERB", "NOUN", "VERB"]:
+#                     # print("Enter a/an %s: " % i)
+#                     print("Enter a/an",  f"{i}", ": ")
+#                     t_list += (str(splited).replace(f"{i}", input()))
+#                     print('t list', t_list)
+#                     val = t_list.split()
+#                     print('val', val)    
+#                     # my_words.append(input())
+            
+#         # print('last ', my_words)
+#         # for line in lines:
+#         #     print('in second line', line)
+#         #     splited = re.split(r'\s|\.', line)
+#         #     print('ans of split', splited)
+#         #     for i in splited:
+#         #         if i in ["ADJECTIVE", "ADVERB", "NOUN", "VERB"]:
+#         #             splited.replace(i, my_words)
+#         with open(my_path+"new_sample.txt", 'w') as f2:
+#             f2.write(line)
+
+# else:
+#     print('No such path exists')
+
+
+# Walking a directory tree - os.walk() :
+# import os
+
+# for foldername, subfolders, filenames in os.walk('/home/vishakha/Documents/Practice/LearningProgramming'):
+#     print('The current folder is ' + foldername)
+
+#     for subfolder in subfolders:
+#         print('Subfolder of '+ foldername + ': ' + subfolder)
+
+#     for filename in filenames:
+#         print('File inside '+ foldername + ': '+ filename)
+
+#     print('')
+
+##
+
+#!/usr/bin/python
+
+# def displayPathtoPrincess(n,grid):
+#     #print all the moves here
+#     print("DOWN")
+#     print("LEFT")
+    
+# m = int(input())
+# grid = [] 
+# for i in range(0, m): 
+#     grid.append(input().strip())
+
+# displayPathtoPrincess(m,grid)
+
+
+# Regex Search :
+import re,os
+
+pattern = re.compile(r"\w*")
+print('pattern', pattern)
+print('dir', os.listdir('.'))
+
+for data in os.listdir('.'):
+    if data.endswith('.txt'):
+        print('yes')
+        with open(data) as obj:
+            line = obj.read()
+            print('line', line)
+            mo = pattern.search(line)
+            if mo == None:
+                continue
+
+        print('mo is ', mo.group())
+
+
+
