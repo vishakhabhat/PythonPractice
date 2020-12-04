@@ -2247,23 +2247,173 @@ import random
 
 
 # Regex Search :
-import re,os
+# import re,os
 
-pattern = re.compile(r"\w*")
-print('pattern', pattern)
-print('dir', os.listdir('.'))
+# pattern = re.compile(r"\w*")
 
-for data in os.listdir('.'):
-    if data.endswith('.txt'):
-        print('yes')
-        with open(data) as obj:
-            line = obj.read()
-            print('line', line)
-            mo = pattern.search(line)
-            if mo == None:
-                continue
+# for data in os.listdir('.'):
+#     if data.endswith('.txt'):
+#         with open(data) as obj:
+#             line = obj.read()
+#             mo = pattern.search(line)
+#             if mo == None:
+#                 continue
 
-        print('mo is ', mo.group())
+#         print('mo is ', mo.group())
 
 
+# Selective Copy :
+# import os, shutil
 
+# for foldername, subfolders, filenames in os.walk('/home/vishakha/Documents/Practice/LearningProgramming/Example/exp1'):
+
+#     print('current folder', foldername)
+#     for filename in filenames:
+#         # print('1 file name', filename)
+#         # if filename.endswith(tuple(['.txt', ''])):
+#         if filename.endswith('.pdf'):
+#             print('filename', filename)
+#             result = shutil.copy(filename, '/home/vishakha/Documents/Practice/LearningProgramming/Example/exp2')
+#             print('result ', result)
+#         print('i m out ')
+
+# Deleting unneeded files :
+
+# import logging
+# logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
+# logging.debug('Start of program')
+
+# for foldername, subfolders, filenames in os.walk('/home/vishakha/Documents/Practice/LearningProgramming'):
+#     print('current folder', foldername)
+
+#     for filename in filenames:
+#         try:
+#             size = os.path.getsize(filename)
+#             print('size of file', filename, size)
+#             if size > 100:
+#                 print('The file with more than 100 MB of size are ', filename)
+#         except FileNotFoundError:
+#             print('File not found')
+
+# logging.debug('End of program')
+
+
+# Debugging Coin Toss :
+
+# import random
+
+# guess = ''
+
+# while guess not in ('heads', 'tails'):
+#     print('Guess the coin toss! Enter heads or tails:')
+#     guess = input()
+
+# toss = random.choice(['heads', 'tails'])
+# if toss == guess:
+#     print('You got it!')
+# else:
+#     print('Nope! Guess again!')
+#     guess = input()
+#     if toss == guess:
+#         print('You got it!')
+#     else:
+#         print('Nope. You are really bad at this game.')
+
+
+import webbrowser, sys
+# Launch webbrowser by giving address using command line :
+
+# address = ''
+# if len(sys.argv) > 1:
+#     address = ' '.join(sys.argv[1:])
+
+# webbrowser.open('https://www.google.com/'+ address)
+
+# Open all links on a page in separate browser tabs :
+
+# link1 = 'https://facebook.com/'
+# link2 = 'https://gmail.com/'
+# link3 = 'https://python.org/'
+
+# webbrowser.open_new_tab(link1)
+# webbrowser.open_new_tab(link2)
+# webbrowser.open_new_tab(link3)
+
+
+# Downloading a web page with the requests.get() :
+
+# import requests, bs4
+
+# res = requests.get('http://nostarch.com')
+# try:
+
+#     print('result', res.raise_for_status())
+#     print('type of res',type(res))
+#     print('req code', requests.codes.ok)
+
+#     if res.status_code == requests.codes.ok:
+#         print('res status code')
+
+# except Exception as e:
+#     print('Some problem existed: %s' %(e))
+# print('len of res text', len(res.text))
+# print('res text char', res.text[:250])
+
+# writing the data downloading from web page to a file on hard drive:
+# my_file = open('temp_file.html', 'wb')
+# for chunk in res.iter_content(100000):
+#     my_file.write(chunk)
+# my_file.close()
+
+# using beautiful soup library:
+
+# soup_obj = bs4.BeautifulSoup(res.text)
+# print('bs4 obj type', type(soup_obj))
+# elems = soup_obj.select('#main-content')
+# print('elems', elems, 'type', type(elems), 'len of elems', len(elems))
+# print('type of elems at 0', type(elems[0]))
+# print('text at index 0', elems[0].getText())
+# print('str version of elems at 0', str(elems[0]))
+# print('attrs of elems at 0', elems[0].attrs)
+
+# pull elements of <p> tag using beautiful soup library:
+
+# p_elems = soup_obj.select('p')
+# print('elems at 0', str(p_elems[0]))
+# print('get text', p_elems[0].getText())
+# print('elems at 1', str(p_elems[1]))
+# print('get text', p_elems[1].getText())
+# print('elems at 2', str(p_elems[2]))
+# print('get text', p_elems[2].getText())
+
+# Getting data from an element's attributes:
+
+# span_elem = soup_obj.select('span')[0]
+# print('str of span elem', str(span_elem)) 
+# print('get id', span_elem.get('id'))
+# print('get class', span_elem.get('class'))
+# print('attrs', span_elem.attrs)
+
+
+# Google Search Project :
+
+import requests, sys, webbrowser, bs4
+
+# Opens several Google search results.
+print('Googling.....') # display tet while downloading the Google page
+res = requests.get('http://google.com/search?q=' + ' '.join(sys.argv[1:]))
+print('res', res)
+res.raise_for_status()
+
+# Retrieve top search result links.
+soup = bs4.BeautifulSoup(res.text)
+# print('soup', soup)
+
+# # Open a browser tab for each result.
+link_elems = soup.select('a')
+print('link elems', link_elems)
+num_open = min(5, len(link_elems))
+print('num open', num_open)
+for i in range(num_open):
+    webbrowser.open('http://google.com' + link_elems[i].get('href'))
+print('exit')
