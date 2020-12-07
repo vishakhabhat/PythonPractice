@@ -2397,23 +2397,88 @@ import webbrowser, sys
 
 # Google Search Project :
 
-import requests, sys, webbrowser, bs4
+# import requests, sys, webbrowser, bs4
 
-# Opens several Google search results.
-print('Googling.....') # display tet while downloading the Google page
-res = requests.get('http://google.com/search?q=' + ' '.join(sys.argv[1:]))
-print('res', res)
-res.raise_for_status()
+# # Opens several Google search results.
+# print('Googling.....') # display tet while downloading the Google page
+# res = requests.get('http://google.com/search?q=' + ' '.join(sys.argv[1:]))
+# print('res', res)
+# res.raise_for_status()
 
-# Retrieve top search result links.
-soup = bs4.BeautifulSoup(res.text)
-# print('soup', soup)
+# # Retrieve top search result links.
+# soup = bs4.BeautifulSoup(res.text)
+# # print('soup', soup)
 
-# # Open a browser tab for each result.
-link_elems = soup.select('a')
-print('link elems', link_elems)
-num_open = min(5, len(link_elems))
-print('num open', num_open)
-for i in range(num_open):
-    webbrowser.open('http://google.com' + link_elems[i].get('href'))
-print('exit')
+# # # Open a browser tab for each result.
+# link_elems = soup.select('a')
+# print('link elems', link_elems)
+# num_open = min(5, len(link_elems))
+# print('num open', num_open)
+# for i in range(num_open):
+#     webbrowser.open('http://google.com' + link_elems[i].get('href'))
+# print('exit')
+
+
+# Working with PDFs :
+
+import PyPDF2
+
+# pdf_obj = open('Example/PDF_Program/sample.pdf', 'rb')
+# pdf_reader = PyPDF2.PdfFileReader(pdf_obj)
+# print('is pdf enctrypted', pdf_reader.isEncrypted)
+# print('no of pages in pdf', pdf_reader.numPages)
+# page_obj = pdf_reader.getPage(0)
+# print('page obj', page_obj)
+# print('see text', page_obj.extractText())
+
+# Copying pages
+
+# pdf1 = open('sample.pdf', 'rb')
+# pdf2 = open('dummy.pdf', 'rb')
+
+# pdf_reader1 = PyPDF2.PdfFileReader(pdf1)
+# pdf_reader2 = PyPDF2.PdfFileReader(pdf2)
+
+# pdf_writer = PyPDF2.PdfFileWriter()
+
+# for p_num in range(pdf_reader1.numPages):
+#     page_obj = pdf_reader1.getPage(p_num)
+#     pdf_writer.addPage(page_obj)
+
+# for p_num in range(pdf_reader2.numPages):
+#     page_obj = pdf_reader2.getPage(p_num)
+#     pdf_writer.addPage(page_obj)
+
+# pdf_output_file = open('Example/PDF_Program/combined.pdf', 'wb')
+# pdf_writer.write(pdf_output_file)
+
+# pdf_output_file.close()
+# pdf1.close()
+# pdf2.close()
+
+# Rotating pages :
+
+file_obj = open('Example/PDF_Program/sample.pdf', 'rb')
+pdf_reader = PyPDF2.PdfFileReader(file_obj)
+# page = pdf_reader.getPage(0)
+# page.rotateClockwise(90)
+
+pdf_writer = PyPDF2.PdfFileWriter()
+# pdf_writer.addPage(page)
+# result_pdf = open('Example/PDF_Program/rotated.pdf', 'wb')
+# pdf_writer.write(result_pdf)
+
+# result_pdf.close()
+# file_obj.close()
+
+# Encrypting PDFs :
+
+for p_num in range(pdf_reader.numPages):
+    pdf_writer.addPage(pdf_reader.getPage(p_num))
+
+pdf_writer.encrypt('swordfish')
+result_pdf = open('Example/PDF_Program/encrypted.pdf', 'wb')
+pdf_writer.write(result_pdf)
+
+result_pdf.close()
+file_obj.close()
