@@ -2458,27 +2458,132 @@ import PyPDF2
 
 # Rotating pages :
 
-file_obj = open('Example/PDF_Program/sample.pdf', 'rb')
-pdf_reader = PyPDF2.PdfFileReader(file_obj)
-# page = pdf_reader.getPage(0)
-# page.rotateClockwise(90)
+# file_obj = open('Example/PDF_Program/sample.pdf', 'rb')
+# pdf_reader = PyPDF2.PdfFileReader(file_obj)
+# # page = pdf_reader.getPage(0)
+# # page.rotateClockwise(90)
 
-pdf_writer = PyPDF2.PdfFileWriter()
-# pdf_writer.addPage(page)
-# result_pdf = open('Example/PDF_Program/rotated.pdf', 'wb')
+# pdf_writer = PyPDF2.PdfFileWriter()
+# # pdf_writer.addPage(page)
+# # result_pdf = open('Example/PDF_Program/rotated.pdf', 'wb')
+# # pdf_writer.write(result_pdf)
+
+# # result_pdf.close()
+# # file_obj.close()
+
+# # Encrypting PDFs :
+
+# for p_num in range(pdf_reader.numPages):
+#     pdf_writer.addPage(pdf_reader.getPage(p_num))
+
+# pdf_writer.encrypt('swordfish')
+# result_pdf = open('Example/PDF_Program/encrypted.pdf', 'wb')
 # pdf_writer.write(result_pdf)
 
 # result_pdf.close()
 # file_obj.close()
 
-# Encrypting PDFs :
 
-for p_num in range(pdf_reader.numPages):
-    pdf_writer.addPage(pdf_reader.getPage(p_num))
+# PDF Paranoia :
 
-pdf_writer.encrypt('swordfish')
-result_pdf = open('Example/PDF_Program/encrypted.pdf', 'wb')
-pdf_writer.write(result_pdf)
+import os
 
-result_pdf.close()
-file_obj.close()
+# For encrypting pdf's
+# for foldername, subfolders, filenames in os.walk('Example/PDF_Program/'):
+
+#     print('current folder', foldername)
+#     for filename in filenames:
+#         if filename.endswith('.pdf'):
+#             print('I m in right place')
+#             print('filename', filename)
+            
+#             file_obj = open(foldername+'/'+filename, 'rb')
+#             pdf_reader = PyPDF2.PdfFileReader(file_obj)
+#             print('pdf reader', pdf_reader.numPages)
+
+#             pdf_writer = PyPDF2.PdfFileWriter()
+ 
+#             for p_num in range(pdf_reader.numPages):
+#                 pdf_writer.addPage(pdf_reader.getPage(p_num))
+
+
+#             pdf_writer.encrypt('ABASE')
+
+#             file_name = os.path.splitext(filename)[0]
+#             result_pdf = open(foldername+'/'+file_name+'_encrypted.pdf', 'wb')
+#             pdf_writer.write(result_pdf)
+
+#             file_obj.close()
+#             result_pdf.close()
+            
+# For decrypting encrypted pdf's
+# for foldername, subfolders, filenames in os.walk('Example/PDF_Program/'):
+
+#     print('current folder', foldername)
+#     for filename in filenames:
+#         if filename.endswith('_encrypted.pdf'):
+#             file_obj = open(foldername+'/'+filename, 'rb')
+#             pdf_reader = PyPDF2.PdfFileReader(file_obj)
+            
+#             if pdf_reader.isEncrypted:
+#                 print('File is encrypted, please provide password to decrypt it...')
+#                 password = input()
+#                 ans = pdf_reader.decrypt(password)
+#                 if ans:
+#                     print('File decrypted successfully')
+
+#                     pdf_writer = PyPDF2.PdfFileWriter()
+ 
+#                     for p_num in range(pdf_reader.numPages):
+#                         pdf_writer.addPage(pdf_reader.getPage(p_num))
+
+                    
+#                     file_name = os.path.splitext(filename)[0]
+#                     name = file_name.split('_')[0]
+#                     result_pdf = open(foldername+'/'+name+'_decrypted.pdf', 'wb')
+#                     pdf_writer.write(result_pdf)
+
+#                     file_obj.close()
+#                     result_pdf.close()
+                    
+#                 else:
+#                     print('File cannot be decrypted, u provided wrong password.')
+
+
+# Brute Force PDF Password Breaker :
+
+words = []
+
+def file_to_list():
+    with open('Example/PDF_Program/BruteForcePasswordBreaker/dictionary.txt') as fh:
+        line = fh.read()
+
+        # line = 'HAIR IS DRY'
+        words = line.split() 
+        words.extend(line.lower().split())
+        # print('new words', words)
+    return words
+
+for foldername, subfolders, filenames in os.walk('Example/PDF_Program/'):
+
+    print('current folder', foldername)
+    for filename in filenames:
+        if filename.endswith('_encrypted.pdf'):
+            file_obj = open(foldername+'/'+filename, 'rb')
+            pdf_reader = PyPDF2.PdfFileReader(file_obj)
+            
+            if pdf_reader.isEncrypted:
+                words = file_to_list()
+                for i in words:
+                    password = i
+                    print('pass', password)
+                    ans = pdf_reader.decrypt(password)
+                    print('ans', ans)
+                    if ans == 1:
+                        print('Hacked Password is:', password)
+                        break
+                    else:
+                        pass
+                
+               
+                
