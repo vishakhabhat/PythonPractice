@@ -2552,38 +2552,84 @@ import os
 
 # Brute Force PDF Password Breaker :
 
-words = []
+# words = []
 
-def file_to_list():
-    with open('Example/PDF_Program/BruteForcePasswordBreaker/dictionary.txt') as fh:
-        line = fh.read()
+# def file_to_list():
+#     with open('Example/PDF_Program/BruteForcePasswordBreaker/dictionary.txt') as fh:
+#         line = fh.read()
 
-        # line = 'HAIR IS DRY'
-        words = line.split() 
-        words.extend(line.lower().split())
-        # print('new words', words)
-    return words
+#         # line = 'HAIR IS DRY'
+#         words = line.split() 
+#         words.extend(line.lower().split())
+#         # print('new words', words)
+#     return words
 
-for foldername, subfolders, filenames in os.walk('Example/PDF_Program/'):
+# for foldername, subfolders, filenames in os.walk('Example/PDF_Program/'):
 
-    print('current folder', foldername)
-    for filename in filenames:
-        if filename.endswith('_encrypted.pdf'):
-            file_obj = open(foldername+'/'+filename, 'rb')
-            pdf_reader = PyPDF2.PdfFileReader(file_obj)
+#     print('current folder', foldername)
+#     for filename in filenames:
+#         if filename.endswith('_encrypted.pdf'):
+#             file_obj = open(foldername+'/'+filename, 'rb')
+#             pdf_reader = PyPDF2.PdfFileReader(file_obj)
             
-            if pdf_reader.isEncrypted:
-                words = file_to_list()
-                for i in words:
-                    password = i
-                    print('pass', password)
-                    ans = pdf_reader.decrypt(password)
-                    print('ans', ans)
-                    if ans == 1:
-                        print('Hacked Password is:', password)
-                        break
-                    else:
-                        pass
+#             if pdf_reader.isEncrypted:
+#                 words = file_to_list()
+#                 for i in words:
+#                     password = i
+#                     print('pass', password)
+#                     ans = pdf_reader.decrypt(password)
+#                     print('ans', ans)
+#                     if ans == 1:
+#                         print('Hacked Password is:', password)
+#                         break
+#                     else:
+#                         pass
                 
-               
+
+# CSV Module :
+
+import csv 
+
+# Reader Objects
+# example_file = open('Example/example.csv')
+# reader = csv.reader(example_file)
+
+# getting all data in a list
+# data = list(reader)
+# print('data', data)
                 
+# reading data from reader objects in a for loop 
+# for row in reader:
+#     print('Row no.' + str(reader.line_num) + ' ' + str(row))
+
+# Writer Objects
+# output_file = open('Example/output.csv', 'w')
+# writer = csv.writer(output_file)
+# writer.writerow(['spam', 'eggs', 'bacon', 'ham'])
+# writer.writerow(['Hello, world!', 'eggs', 'bacon', 'ham'])
+# writer.writerow([1, 2, 3.141592, 4])
+
+# output_file.close()
+
+
+# JSON Module :
+
+import json
+
+# Reading JSON data
+# string_of_json_data = '{ "name": "Zophie", "is_cat": true, "mice_caught": 0, "feline_IQ": null }'
+
+# data = json.loads(string_of_json_data)
+# print('JSON data as Python value :', data)
+
+# Writing JSON data
+# python_value = {
+#     'is_cat': True,
+#     'mice_caught': 0,
+#     'name': 'Zophie',
+#     'feline_IQ': None
+# }
+
+# data = json.dumps(python_value)
+# print('String of JSON data :', data)
+
