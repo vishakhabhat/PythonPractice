@@ -2633,3 +2633,48 @@ import json
 # data = json.dumps(python_value)
 # print('String of JSON data :', data)
 
+
+# Pretified Stopwatch Program :
+
+# import time
+
+# # Display the program's instructions
+# print('Press ENTER to begin. Afterwards, press ENTER to "click" the stopwatch. Press Ctrl-C to quit.')
+# input()    # Press Enter to begin
+# print('Started.')
+
+# start_time = time.time() # get the first lap's start time
+# last_time = start_time
+# lap_num = 1
+
+# # Start tracking the lap times
+# try:
+#         while True:
+#                 input()
+#                 lap_time = round(time.time() - last_time, 2)
+#                 total_time = round(time.time() - start_time, 2)
+#                 print('Lap #%s: %s (%s)' % (str(lap_num).rjust(2), str(total_time).rjust(6), str(lap_time).rjust(6)), end='')
+#                 lap_num += 1
+#                 last_time = time.time()  # reset the last lap time
+# except KeyboardInterrupt:
+#         print('\nDone.')
+
+# TODO
+# Random Chore Assignment Emailer :
+
+# import random, smtplib
+
+# emails = ['vishakhabhat1995@gmail.com', 'vish12495@gmail.com']
+# chores = ['dishes', 'bathroom']
+
+# smtp_obj = smtplib.SMTP('smtp.gmail.com', 587)
+# smtp_obj.ehlo()
+# smtp_obj.starttls()
+# password = input('Enter your password')
+# smtp_obj.login('vishakhabhat93@rediffmail.com', password)
+
+# for i in emails:
+#         random_chore = random.choice(chores)
+#         smtp_obj.sendmail(i, 'Subject: This is the task assigned to you...', 'Task'+ random_chore)
+
+# smtp_obj.quit()
