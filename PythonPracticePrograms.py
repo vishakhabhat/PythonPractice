@@ -2678,3 +2678,61 @@ import json
 #         smtp_obj.sendmail(i, 'Subject: This is the task assigned to you...', 'Task'+ random_chore)
 
 # smtp_obj.quit()
+
+
+# Manipulating Images :
+
+# from PIL import ImageColor, Image
+
+# print(ImageColor.getcolor('red', 'RGBA'))
+
+# cat = Image.open('Example/zophie.png')
+# print(cat)
+
+
+# Adding a logo :
+
+import os
+from PIL import Image
+
+SQUARE_FIT_SIZE = 300
+LOGO_FILENAME = 'catlogo.png'
+
+logo_img = Image.open('Example/'+LOGO_FILENAME)
+logo_width, logo_height = logo_img.size
+print('w h', logo_width, logo_height)
+
+os.makedirs('Example/withLogo', exist_ok=True)
+
+# Loop over all files in the working directory
+for filename in os.listdir('Example/'):
+        if not (filename.endswith('.png') or filename.endswith('.jpg')) or filename == LOGO_FILENAME:
+                continue # skip non-image files and the logo file itself
+
+        img = Image.open('Example/'+filename)
+        width, height = img.size
+        print('w h of img', width, height)
+
+# Resize the images if needed
+        if width > SQUARE_FIT_SIZE and height > SQUARE_FIT_SIZE:
+                # calculate the new width and height to resize to
+                if width > height:
+                        height = int((SQUARE_FIT_SIZE / width) * height)
+                        width = SQUARE_FIT_SIZE
+                else:
+                        width = int((SQUARE_FIT_SIZE / height) * width)
+                        height = SQUARE_FIT_SIZE
+
+                # Resize the image
+                print('Resizing %s...' % ('Example/'+filename))
+                img = img.resize((width, height))
+
+# Add the logo and save the changes
+        print('Adding logo to %s...' % (filename))
+        img.paste(logo_img, (width - logo_width, height - logo_height), logo_img)
+        img.save(os.path.join('Example/withLogo', filename))
+
+
+
+
+
