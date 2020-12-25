@@ -2692,47 +2692,289 @@ import json
 
 # Adding a logo :
 
-import os
-from PIL import Image
+# import os
+# from PIL import Image
 
-SQUARE_FIT_SIZE = 300
-LOGO_FILENAME = 'catlogo.png'
+# SQUARE_FIT_SIZE = 300
+# LOGO_FILENAME = 'catlogo.png'
 
-logo_img = Image.open('Example/'+LOGO_FILENAME)
-logo_width, logo_height = logo_img.size
-print('w h', logo_width, logo_height)
+# logo_img = Image.open('Example/'+LOGO_FILENAME)
+# logo_width, logo_height = logo_img.size
+# print('w h', logo_width, logo_height)
 
-os.makedirs('Example/withLogo', exist_ok=True)
+# os.makedirs('Example/withLogo', exist_ok=True)
 
-# Loop over all files in the working directory
-for filename in os.listdir('Example/'):
-        if not (filename.endswith('.png') or filename.endswith('.jpg')) or filename == LOGO_FILENAME:
-                continue # skip non-image files and the logo file itself
+# # Loop over all files in the working directory
+# for filename in os.listdir('Example/'):
+#         if not (filename.endswith('.png') or filename.endswith('.jpg')) or filename == LOGO_FILENAME:
+#                 continue # skip non-image files and the logo file itself
 
-        img = Image.open('Example/'+filename)
-        width, height = img.size
-        print('w h of img', width, height)
+#         img = Image.open('Example/'+filename)
+#         width, height = img.size
+#         print('w h of img', width, height)
 
-# Resize the images if needed
-        if width > SQUARE_FIT_SIZE and height > SQUARE_FIT_SIZE:
-                # calculate the new width and height to resize to
-                if width > height:
-                        height = int((SQUARE_FIT_SIZE / width) * height)
-                        width = SQUARE_FIT_SIZE
-                else:
-                        width = int((SQUARE_FIT_SIZE / height) * width)
-                        height = SQUARE_FIT_SIZE
+# # Resize the images if needed
+#         if width > SQUARE_FIT_SIZE and height > SQUARE_FIT_SIZE:
+#                 # calculate the new width and height to resize to
+#                 if width > height:
+#                         height = int((SQUARE_FIT_SIZE / width) * height)
+#                         width = SQUARE_FIT_SIZE
+#                 else:
+#                         width = int((SQUARE_FIT_SIZE / height) * width)
+#                         height = SQUARE_FIT_SIZE
 
-                # Resize the image
-                print('Resizing %s...' % ('Example/'+filename))
-                img = img.resize((width, height))
+#                 # Resize the image
+#                 print('Resizing %s...' % ('Example/'+filename))
+#                 img = img.resize((width, height))
 
-# Add the logo and save the changes
-        print('Adding logo to %s...' % (filename))
-        img.paste(logo_img, (width - logo_width, height - logo_height), logo_img)
-        img.save(os.path.join('Example/withLogo', filename))
-
-
+# # Add the logo and save the changes
+#         print('Adding logo to %s...' % (filename))
+#         img.paste(logo_img, (width - logo_width, height - logo_height), logo_img)
+#         img.save(os.path.join('Example/withLogo', filename))
 
 
+# FreeCodeCamp Questions :
 
+# Arithmetic Formatter :
+# problems = ["32 + 8", "1 - 3801", "9999 + 9999", "523 - 49", "1 + 1"]
+# arranged_problems = ''
+# result = ''
+# sec_arg = True
+
+# if len(problems) <= 5:
+
+
+#         for prob in problems:
+#                 op1, op, op2 = prob.split()
+#                 just = max(len(op1), len(op2))
+                
+#                 print('is decimal', op1.isdigit() and op2.isdigit())
+#                 if op1.isdecimal() and op2.isdecimal():
+#                         if len(op1) <= 4 and len(op2) <= 4:
+
+#                                 if len(op1) > len(op2):
+                                       
+#                                         if op == '+' or op == '-':
+
+#                                                 first = ' '+op1
+#                                                 second = op+op2.rjust(len(op1))
+#                                                 last = "-"*(just+2)
+
+#                                                 final = first + '\n' + second + '\n' + last + '\n'
+                                                
+#                                                 if sec_arg:
+#                                                         result = eval(op1+op+op2) 
+#                                                         print('result ', result)
+#                                                         final2 = final + ' ' + str(result).rjust(just) + '\n'
+#                                                         arranged_problems += final2
+#                                                 else:
+#                                                         arranged_problems += final  
+
+
+#                                         else:
+#                                                 raise ValueError("Error: Operator must be '+' or '-' ")
+
+#                                 elif len(op1) == len(op2):
+                                        
+#                                         if op == '+' or op == '-':
+
+#                                                 first = '  '+op1
+#                                                 second = op+' '+op2
+#                                                 last = "-"*(just+2)
+
+#                                                 final = first + '\n' + second + '\n' + last + '\n'
+                                                
+#                                                 if sec_arg:
+#                                                         result = eval(op1+op+op2) 
+#                                                         print('result ', result)
+#                                                         final2 = final + ' ' + str(result).rjust(just) + '\n'
+#                                                         arranged_problems += final2
+#                                                 else:
+#                                                         arranged_problems += final
+                                                
+#                                         else:
+#                                                 raise ValueError("Error: Operator must be '+' or '-' ")
+                                                
+#                                 else:
+                                        
+#                                         if op == '+' or op == '-':
+
+#                                                 first = ''.rjust(len(op2))+' '+op1
+#                                                 second = op+' '+op2
+#                                                 last = "-"*(just+2)
+
+#                                                 final = first + '\n' + second + '\n' + last + '\n'
+                                               
+#                                                 if sec_arg:
+#                                                         result = eval(op1+op+op2) 
+#                                                         print('result ', result)
+#                                                         final2 = final + ' ' + str(result).rjust(just) + '\n'
+#                                                         arranged_problems += final2
+#                                                 else:
+#                                                         arranged_problems += final
+                                                
+
+#                                         else:
+#                                                 raise ValueError("Error: Operator must be '+' or '-' ")
+#                         else:
+#                             raise ValueError("Error: Numbers cannot be more than four digits.")            
+#                 else:
+#                         raise ValueError("Error: Numbers must only contain digits.")                        
+             
+
+# else:
+#         raise ValueError('Error: Too many problems.')
+
+
+# Time Calculator :
+
+# import math
+
+# def add_time(start_time, duration):
+#         new_time = ''
+#         days = 0
+#         time, unit = start_time.split()
+#         st_hour, st_min = time.split(':')
+
+#         dur_hour, dur_min = duration.split(':')
+
+#         if int(dur_min) < 60:
+
+#                 new_hour = int(st_hour) + int(dur_hour)
+                
+#                 if int(new_hour) < 13:
+
+
+#                         new_min = int(st_min) + int(dur_min)
+                        
+#                         if int(new_min) < 60:
+#                                 new_time = str(new_hour) + ':' + str(new_min) + ' ' + unit
+#                         else:
+#                                 new_hour += 1
+#                                 new_min = new_min - 60
+
+#                                 if unit == 'AM':
+#                                         unit = 'PM'
+#                                 else:
+#                                         unit = 'AM (next day)'
+
+#                                 if new_min < 10:
+#                                         new_time = str(new_hour) + ':0' + str(new_min) + ' ' + unit 
+#                                 else:
+#                                         new_time = str(new_hour) + ':' + str(new_min) + ' ' + unit 
+
+                
+#                 elif int(new_hour) > 24:
+#                         new_min = int(st_min) + int(dur_min)
+
+#                         if int(new_min) < 60:
+#                                 days = new_hour/24
+                                
+#                                 bal_day = math.floor(days)
+#                                 bal_hour = bal_day  * 24
+#                                 rem_hour = int(new_hour) - bal_hour
+#                                 extra_hour = int(st_hour) + rem_hour
+#                                 new_hour = int(st_hour) + abs(extra_hour - 24)
+                                
+#                                 # new_min = int(st_min) + int(dur_min)
+                                
+#                                 if unit == 'AM':
+#                                         unit = 'PM'
+#                                 else:
+#                                         unit = 'AM'
+
+                                
+#                                 new_time = str(new_hour) + ':' + str(new_min) + ' ' + unit + ' (' + str(math.ceil(days)) + ' days later)'
+#                         else:
+#                                 new_hour += 1
+#                                 days = new_hour/24
+                                
+#                                 bal_day = math.floor(days)
+#                                 bal_hour = bal_day  * 24
+#                                 rem_hour = int(new_hour) - bal_hour
+#                                 extra_hour = int(st_hour) + rem_hour
+#                                 new_hour = int(st_hour) + abs(extra_hour - 24)
+                                
+#                                 # new_min = int(st_min) + int(dur_min)
+                                
+#                                 if unit == 'AM':
+#                                         unit = 'PM'
+#                                 else:
+#                                         unit = 'AM'
+
+#                                 new_min = new_min - 60
+
+#                                 if new_min < 10:
+#                                         new_time = str(new_hour) + ':0' + str(new_min) + ' ' + unit + ' (' + str(math.ceil(days)) + ' days later)'
+#                                 else:
+#                                         new_time = str(new_hour) + ':' + str(new_min) + ' ' + unit + ' (' + str(math.ceil(days)) + ' days later)'
+
+#                 else:
+#                         if new_hour == 13:
+#                                 new_hour = 1
+#                         elif new_hour == 14:
+#                                 new_hour = 2
+#                         elif new_hour == 15:
+#                                 new_hour = 3
+#                         elif new_hour == 16:
+#                                 new_hour = 4
+#                         elif new_hour == 17:
+#                                 new_hour = 5
+#                         elif new_hour == 18:
+#                                 new_hour = 6
+#                         elif new_hour == 19:
+#                                 new_hour = 7
+#                         elif new_hour == 20:
+#                                 new_hour = 8
+#                         elif new_hour == 21:
+#                                 new_hour = 9
+#                         elif new_hour == 22:
+#                                 new_hour = 10
+#                         elif new_hour == 23:
+#                                 new_hour = 11
+#                         else:
+#                                 pass
+
+#                         new_min = int(st_min) + int(dur_min)
+                        
+#                         if unit == 'AM':
+#                                 unit = 'PM'
+#                         else:
+#                                 unit = 'AM (next day)'
+
+
+#                         if int(new_min) < 60:
+#                                 new_time = str(new_hour) + ':' + str(new_min) + ' ' + unit
+#                         else:
+#                                 new_hour += 1
+#                                 new_min = new_min - 60
+                                
+                                
+#                                 if new_min < 10:
+#                                         new_time = str(new_hour) + ':0' + str(new_min) + ' ' + unit
+#                                 else:
+#                                         new_time = str(new_hour) + ':' + str(new_min) + ' ' + unit
+
+
+                        
+#         return new_time
+
+
+# # OUTPUT :
+# print(add_time("3:00 PM", "3:10"))
+# # Returns: 6:10 PM 
+
+# print(add_time("11:30 AM", "2:32"))
+# # Returns: 2:02 PM, Monday
+
+# print(add_time("11:43 AM", "00:20"))
+# # Returns: 12:03 PM
+
+# print(add_time("10:10 PM", "3:30"))
+# # Returns: 1:40 AM (next day)
+ 
+# print(add_time("11:43 PM", "24:20"))
+# # Returns: 12:03 AM, Thursday (2 days later)
+ 
+# print(add_time("6:30 PM", "205:12"))
+# # Returns: 7:42 AM (9 days later)
