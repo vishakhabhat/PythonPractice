@@ -2978,3 +2978,160 @@ import json
  
 # print(add_time("6:30 PM", "205:12"))
 # # Returns: 7:42 AM (9 days later)
+
+
+# TODO
+# Budget App :
+
+# class Category:
+#         amount = 0
+#         descrp = ''
+        
+#         def __init__(self, name, ledger):
+#                 self.name = name
+#                 self.ledger = list()
+
+#         def deposit(self, amount, descrp=''):
+#                 # print('amt', amount)
+#                 self.ledger.append({"amount": amount, "descrp": descrp})
+#                 return self.ledger
+                
+
+#         def get_balance(self, name):
+#                 balance = 0
+#                 return balance   
+
+#         def check_funds(self, amount):
+#                 if amount > self.get_balance(self.name):
+#                         return False
+#                 else:
+#                         return True
+
+
+#         def withdraw(self, amount, descrp=''):
+#                 amount = 0 - amount  
+#                 if self.check_funds(amount):
+#                         return True 
+#                 else:
+#                         return False
+
+#         def transfer(self, amount, name):
+#                 pass
+
+#         def __repr__(self):
+#                 return self.name
+
+
+# cat1 = Category("food", [])
+# print(str(cat1))
+# print('deposit', cat1.deposit(100))
+# print('withdraw', cat1.withdraw(200))
+
+# OUTPUT :
+
+# *************Food*************
+# initial deposit        1000.00
+# groceries               -10.15
+# restaurant and more foo -15.89
+# Transfer to Clothing    -50.00
+# Total: 923.96
+
+
+# Polygon Area Calculator :
+
+class Rectangle:
+        
+        def __init__(self, width, height):
+                self.width = width
+                self.height = height 
+
+        def set_width(self, width):
+                self.width = width
+        
+        def set_height(self, height):
+                self.height = height
+
+        def get_area(self):
+                return (self.width * self.height)
+
+        def get_perimeter(self):
+                return (2 * self.width + 2 * self.height)
+        
+        def get_diagonal(self):
+                return ((self.width ** 2 + self.height ** 2) ** 0.5)
+
+        def get_picture(self):
+                if self.height <= 50 and self.width <= 50:
+                        line = ""
+                        for _ in range(self.height):
+                                for _ in range(self.width):
+                                        line += "*"
+                                line += "\n"
+                else:
+                        return "Too big for picture."
+                return line
+
+        def get_amount_inside(self, shape):
+                area_outer = shape.get_area()
+                area_inner = self.get_area()
+                i = 0
+                while area_inner >= area_outer:
+                        area_inner = area_inner - area_outer
+                        i = i+1
+                return i
+                
+
+        def __repr__(self):
+                return f"Rectangle(width={self.width}, height={self.height})"
+                # return f" Width is {self.width} and Height is {self.height}"
+
+                
+
+
+class Square(Rectangle):
+        
+        def __init__(self, side):
+                super().__init__(side, side)
+                self.side = side
+
+        def set_side(self, side):
+                self.side = side
+
+        def get_picture(self):
+                if self.side <= 50:
+                        line = ""
+                        for _ in range(self.side):
+                                for _ in range(self.side):
+                                        line += "*"
+                                line += "\n"
+                else:
+                        return "Too big for picture."
+                return line
+
+
+        def __repr__(self):
+                return f"Square(side={self.side})"
+                # return f" Side is {self.side}"
+
+
+
+
+rectangle1 = Rectangle(width=10, height=5)
+# print('rect ', rectangle1)
+print('Area of rectangle :', rectangle1.get_area())
+rectangle1.set_height(3)
+print('Perimeter of rectangle :', rectangle1.get_perimeter())
+print(rectangle1)
+print(rectangle1.get_picture())
+
+
+square1 = Square(side=9)
+print('Area of square :', square1.get_area())
+square1.set_side(4)
+print('Diagonal of square :', square1.get_diagonal())
+print(square1)
+print(square1.get_picture())
+
+rectangle1.set_height(8)
+rectangle1.set_width(16)
+print(rectangle1.get_amount_inside(square1))
